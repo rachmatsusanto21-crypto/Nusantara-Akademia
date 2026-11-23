@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-display: 'Cinzel', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #0b1120;
+    color: #f1f5f9;
+    overflow-x: hidden;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono-tabular {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.pixelated {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* RPG Classic Double-Border Frame without clutter */
+.rpg-panel {
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.94) 0%, rgba(11, 17, 32, 0.97) 100%);
+  border: 2px solid #b48a3e;
+  box-shadow: inset 0 0 0 2px #1e293b, 0 12px 32px rgba(0, 0, 0, 0.55);
+}
+
+.rpg-parchment {
+  background: #fdf6e3;
+  color: #292014;
+  border: 3px double #7c5827;
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 3.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-slow {
+    animation: none;
+  }
+}
+
+/* A4 Print Styles for Rapor Versi Siswa & Versi Guru */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 14mm;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only-container {
+    position: static !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+  }
+}
